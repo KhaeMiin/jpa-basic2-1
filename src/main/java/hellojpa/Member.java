@@ -19,10 +19,6 @@ public class Member extends BaseEntity {
     @JoinColumn(name = "TEAM_ID",insertable = false, updatable = false) //insertable, updatable: 무효화시킴(조회만 가능하도록)
     private Team team;
 
-    @OneToOne
-    @JoinColumn(name = "LOCKER_ID")
-    private Locker locker;
-
     @ManyToMany
     @JoinTable(name = "MEMBER_PRODUCT")
     private List<Product> products = new ArrayList<>();
@@ -43,4 +39,11 @@ public class Member extends BaseEntity {
         this.username = username;
     }
 
+    public Team getTeam() {
+        return team;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
 }
